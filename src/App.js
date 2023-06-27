@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       <Header />
-      <ToastContainer autoClose={2000} />
+      <ToastContainer autoClose={2000} theme="colored" />
       {(!currentUser || !adminUser) && (
         <Routes>
           <Route path="/" element={<HomePage />} />

@@ -13,7 +13,7 @@ function Header() {
       payload: null,
     });
     // console.log("user logout");
-    toast("Logout Successful");
+    toast.success("Logout Successful");
     // localStorage.removeItem("jwt-token");
     // localStorage.removeItem("admin");
     localStorage.clear();

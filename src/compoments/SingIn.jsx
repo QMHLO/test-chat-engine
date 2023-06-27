@@ -38,7 +38,13 @@ function SignIn() {
         // console.log("User profile", response.data.user);
         // console.log("User token", response.data.jwt);
         // console.log("User Login Successful");
-        toast("Login Successful");
+        // toast.success("Login Successful");
+        const functionThatReturnPromise = () => new Promise((resolve) => setTimeout(resolve, 3000));
+        toast.promise(functionThatReturnPromise, {
+          pending: "Logging",
+          success: "Login Successful 👌",
+          error: "Login Error 🤯",
+        });
 
         dispatch({
           type: "SET_USER",
