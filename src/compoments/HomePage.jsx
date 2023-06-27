@@ -71,12 +71,17 @@ export default function HomePage() {
           })}
       </div>
 
-      <div className="paginaion">
+      <div className="pagination">
         <button onClick={prevHandler} disabled={isPrev ? true : false}>
-          prev
+          Prev
         </button>
+        {[...Array(Math.ceil(total / itemLimitCount)).keys()].map((num) => (
+          <button key={num + 1} onClick={() => setStart(num + 1)} disabled={start === num + 1}>
+            {num + 1}
+          </button>
+        ))}
         <button onClick={nextHandler} disabled={isNext ? true : false}>
-          next
+          Next
         </button>
       </div>
     </>
