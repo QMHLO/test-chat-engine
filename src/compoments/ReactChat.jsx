@@ -4,15 +4,13 @@ import axios from "axios";
 
 import { AuthContext } from "../Context/AuthContext";
 import { ChatEngine } from "react-chat-engine";
+import Loading from "./Loading";
 
 function ReactChat() {
   let { currentUser } = React.useContext(AuthContext);
   const [dataId, setDataId] = React.useState(null);
   const [user, setUser] = React.useState(null);
-
-  // currentUser = {
-  //   email: "test01@gamil.com",
-  // };
+  const [loading, setLoading] = React.useState(false);
 
   console.log(currentUser);
 
@@ -45,12 +43,14 @@ function ReactChat() {
 
   React.useEffect(() => {
     const fectchData = async () => {
+      setLoading(!loading);
       try {
         getorCreateUser((user) => {
           setUser(user);
           return getorCreateChat((chat) => {
             console.log("success", chat);
             setDataId(chat);
+            setLoading(!loading);
           });
         });
       } catch (err) {
@@ -59,7 +59,7 @@ function ReactChat() {
     };
     fectchData();
   }, []);
-  if (!dataId || !user) return <div>Loading ... user chat</div>;
+  if (!dataId || !user) return <Loading />;
   console.log(dataId.id);
   return (
     // <ChatEngineWrapper>

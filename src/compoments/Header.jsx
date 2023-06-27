@@ -1,6 +1,7 @@
 import React from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 function Header() {
   const { currentUser, adminUser, dispatch } = React.useContext(AuthContext);
   const [jwt, setJwt] = React.useState(localStorage.getItem("jwt-token"));
@@ -11,7 +12,8 @@ function Header() {
       type: "SET_USER",
       payload: null,
     });
-    console.log("user logout");
+    // console.log("user logout");
+    toast("Logout Successful");
     // localStorage.removeItem("jwt-token");
     // localStorage.removeItem("admin");
     localStorage.clear();

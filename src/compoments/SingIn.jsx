@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function SignIn() {
   const [SignInData, setSignIn] = useState({
@@ -36,7 +37,8 @@ function SignIn() {
         // console.log("Well done!");
         // console.log("User profile", response.data.user);
         // console.log("User token", response.data.jwt);
-        console.log("User Login Successful");
+        // console.log("User Login Successful");
+        toast("Login Successful");
 
         dispatch({
           type: "SET_USER",

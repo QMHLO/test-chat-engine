@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../Context/ProductContext";
+import Loading from "./Loading";
 
 export default function HomePage() {
   const [data, setData] = React.useState(null);
@@ -10,15 +11,18 @@ export default function HomePage() {
   const [total, setTotal] = React.useState(0);
   const itemLimitCount = 2;
   const startItem = (start - 1) * itemLimitCount;
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     const fectchData = async () => {
+      setLoading(!loading);
       try {
         //http://localhost:1337/api/products?populate=*pagination[start]=0&pagination[limit]=2&sort[0]=id%3Adesc sort and pagination
         const res = await fetch(`http://localhost:1337/api/products?populate=*&pagination[start]=${startItem}&pagination[limit]=${itemLimitCount}&sort[0]=id%3Adesc`);
         const data = await res.json();
         setTotal(data?.meta?.pagination?.total);
         setData(data);
+        setLoading(!loading);
         console.log(data);
         dispatch({
           type: "SET_PRODUCT",
@@ -43,9 +47,14 @@ export default function HomePage() {
     if (isNext) return;
     setStart((pre) => pre + 1);
   };
-
+  // return <Loading />;
   if (data === "Error") return <div>Error Occured While fetching data</div>;
-  if (!total) return <div>Loading posts ....</div>;
+  if (!total)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   if (!data) return <div>Loading ... data </div>;
   // if (data) return <div>Data have received</div>;
   return (

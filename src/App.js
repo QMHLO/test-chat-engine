@@ -9,6 +9,8 @@ import DetailPage from "./compoments/DetailPage";
 import ReactChat from "./compoments/ReactChat";
 import OwnerChat from "./compoments/OwnerChat";
 import "./App.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { currentUser, adminUser } = React.useContext(AuthContext);
@@ -19,7 +21,7 @@ function App() {
   return (
     <div>
       <Header />
-
+      <ToastContainer autoClose={2000} />
       {(!currentUser || !adminUser) && (
         <Routes>
           <Route path="/" element={<HomePage />} />
