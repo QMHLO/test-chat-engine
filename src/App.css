@@ -200,8 +200,8 @@ body {
   text-align: left;
 }
 .owner .ce-reads-row .ce-avatar-dot:nth-child(1) {
-  opacity: 0 !important;
+  display: none !important;
 }
 .customer .ce-reads-row .ce-avatar-dot:nth-child(2) {
-  opacity: 0 !important;
+  display: none !important;
 }
