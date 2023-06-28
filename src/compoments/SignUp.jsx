@@ -3,6 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function SignUp() {
   const [SignUpData, setSignUp] = useState({
@@ -67,6 +68,9 @@ function SignUp() {
         <input name="email" value={SignUpData.email} type="text" placeholder="enter your email" onChange={onChangeHandler} />
         <input name="password" type="password" value={SignUpData.password} placeholder="enter your password" onChange={onChangeHandler} />
         <button type="submit">Submit</button>
+        <p>
+          You have alerady account?Please <Link to={"/signin"}>SignIn</Link>
+        </p>
       </form>
     </div>
   );

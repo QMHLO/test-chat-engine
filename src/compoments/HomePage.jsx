@@ -81,7 +81,7 @@ export default function HomePage() {
       </div>
 
       <div className="pagination">
-        <button onClick={prevHandler} disabled={isPrev ? true : false}>
+        <button onClick={prevHandler} disabled={isPrev ? true : false} className={isPrev ? "hide" : ""}>
           Prev
         </button>
         {[...Array(Math.ceil(total / itemLimitCount)).keys()].map((num) => (
@@ -89,7 +89,7 @@ export default function HomePage() {
             {num + 1}
           </button>
         ))}
-        <button onClick={nextHandler} disabled={isNext ? true : false}>
+        <button onClick={nextHandler} disabled={isNext ? true : false} className={isNext ? "hide" : ""}>
           Next
         </button>
       </div>

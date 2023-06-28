@@ -62,19 +62,9 @@ function ReactChat() {
   if (!dataId || !user) return <Loading />;
   console.log(dataId.id);
   return (
-    // <ChatEngineWrapper>
-    //   <Socket projectID="7e806a50-45ed-494b-9598-dd683a3324b4" userName={user.email} userSecret={user.email} />
-    //   <ChatFeed activeChat={dataId?.id} />
-    // </ChatEngineWrapper>
-    // <ChatEngineWrapper>
-    //   <Socket projectID="7e806a50-45ed-494b-9598-dd683a3324b4" userName={user.email} userSecret={user.email} />
-    //   <ChatFeed activeChat={dataId?.id} />
-    // </ChatEngineWrapper>
-    <ChatEngine projectID={process.env.REACT_APP_CE_PROJECT_ID} userName={user.email} userSecret={user.email} renderNewChatForm={() => <div></div>} />
-    // <ChatEngineWrapper>
-    //   <Socket projectID={import.meta.env.VITE_REACT_APP_CE_PROJECT_ID} userName={user.email} userSecret={user.email} />
-    //   <ChatFeed renderNewMessageForm={() => <MessageFormSocial />}/>
-    // </ChatEngineWrapper>
+    <div className="customer">
+      <ChatEngine projectID={process.env.REACT_APP_CE_PROJECT_ID} userName={user.email} userSecret={user.email} renderNewChatForm={() => <div></div>} />
+    </div>
   );
 }
 

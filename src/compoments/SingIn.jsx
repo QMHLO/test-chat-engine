@@ -3,6 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function SignIn() {
   const [SignInData, setSignIn] = useState({
@@ -75,6 +76,9 @@ function SignIn() {
         <input name="email" value={SignInData.email} type="text" onChange={onChangeHandler} placeholder="enter your email" />
         <input name="password" type="password" value={SignInData.password} onChange={onChangeHandler} placeholder="enter your password" />
         <button type="submit">Submit</button>
+        <p>
+          Don't have an account?Please <Link to={"/signup"}>SignUp</Link>
+        </p>
       </form>
     </div>
   );
