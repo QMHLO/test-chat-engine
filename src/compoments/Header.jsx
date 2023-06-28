@@ -37,12 +37,18 @@ function Header() {
             </li>
           )}
           {currentUser !== null || adminUser !== null || jwt || admin ? (
-            <li>
-              {" "}
-              <Link to={"/"} onClick={logoutHandler}>
-                Logout
-              </Link>
-            </li>
+            <>
+              <li>
+                {" "}
+                <Link to={"/chat"}>Chat</Link>
+              </li>
+              <li>
+                {" "}
+                <Link to={"/"} onClick={logoutHandler}>
+                  Logout
+                </Link>
+              </li>
+            </>
           ) : (
             <>
               <li>
