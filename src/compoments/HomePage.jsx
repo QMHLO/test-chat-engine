@@ -9,7 +9,7 @@ export default function HomePage() {
   const { dispatch } = React.useContext(ProductContext);
   const [start, setStart] = React.useState(1);
   const [total, setTotal] = React.useState(0);
-  const itemLimitCount = 2;
+  const itemLimitCount = 3;
   const startItem = (start - 1) * itemLimitCount;
   const [loading, setLoading] = React.useState(false);
 
@@ -18,7 +18,7 @@ export default function HomePage() {
       setLoading(!loading);
       try {
         //http://localhost:1337/api/products?populate=*pagination[start]=0&pagination[limit]=2&sort[0]=id%3Adesc sort and pagination
-        const res = await fetch(`http://localhost:1337/api/products?populate=*&pagination[start]=${startItem}&pagination[limit]=${itemLimitCount}&sort[0]=id%3Adesc`);
+        const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/products?populate=*&pagination[start]=${startItem}&pagination[limit]=${itemLimitCount}&sort[0]=id%3Adesc`);
         const data = await res.json();
         setTotal(data?.meta?.pagination?.total);
         setData(data);

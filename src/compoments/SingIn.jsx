@@ -25,6 +25,7 @@ function SignIn() {
         payload: SignInData,
       });
       localStorage.setItem("admin", "1");
+      toast.success("Welcome Admin");
       navigate("/adminchat");
       return;
     }
