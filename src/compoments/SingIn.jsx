@@ -18,7 +18,7 @@ function SignIn() {
 
     // signin
     const { email, password } = SignInData;
-    if (process.env.REACT_APP_OWNER_MAIL === email && process.env.REACT_APP_OWNER_PASS === password) {
+    if ((process.env.REACT_APP_OWNER_MAIL === email && process.env.REACT_APP_OWNER_PASS === password) || (process.env.REACT_APP_ADMIN_MAIL === email && process.env.REACT_APP_ADMIN_PASS === password)) {
       dispatch({
         type: "SET_ADMINUSER",
         payload: SignInData,
@@ -38,13 +38,7 @@ function SignIn() {
         // console.log("User profile", response.data.user);
         // console.log("User token", response.data.jwt);
         // console.log("User Login Successful");
-        // toast.success("Login Successful");
-        const functionThatReturnPromise = () => new Promise((resolve) => setTimeout(resolve, 3000));
-        toast.promise(functionThatReturnPromise, {
-          pending: "Logging",
-          success: "Login Successful 👌",
-          error: "Login Error 🤯",
-        });
+        toast.success("Welcome Back");
 
         dispatch({
           type: "SET_USER",
@@ -59,6 +53,7 @@ function SignIn() {
       .catch((error) => {
         // Handle error.
         console.log("An error occurred:", error.response);
+        toast.error("Login Error");
       });
 
     console.log(SignInData);

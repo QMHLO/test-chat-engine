@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function SignUp() {
   const [SignUpData, setSignUp] = useState({
@@ -39,11 +40,13 @@ function SignUp() {
           payload: SignUpData,
         });
         localStorage.setItem("jwt-token", response.data.jwt);
+        toast.success("User Registration Success");
         navigate("/chat");
       })
       .catch((error) => {
         // Handle error.
         console.log("An error occurred:", error.response);
+        toast.error("This email address had been taken");
       });
 
     console.log("State Updated to Auth");

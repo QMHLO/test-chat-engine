@@ -12,15 +12,15 @@ function Header() {
       type: "SET_USER",
       payload: null,
     });
+    dispatch({
+      type: "SET_ADMINUSER",
+      payload: null,
+    });
     // console.log("user logout");
     toast.success("Logout Successful");
     // localStorage.removeItem("jwt-token");
     // localStorage.removeItem("admin");
     localStorage.clear();
-    dispatch({
-      type: "SET_ADMINUSER",
-      payload: null,
-    });
   };
   return (
     <>
