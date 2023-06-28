@@ -69,7 +69,7 @@ function SignUp() {
         <input name="password" type="password" value={SignUpData.password} placeholder="enter your password" onChange={onChangeHandler} />
         <button type="submit">Submit</button>
         <p>
-          You have alerady account?Please <Link to={"/signin"}>SignIn</Link>
+          Already have an account? <Link to={"/signin"}>SignIn Here!</Link>
         </p>
       </form>
     </div>
