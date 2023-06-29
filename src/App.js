@@ -30,6 +30,8 @@ function App() {
           {/* <Route path="/detail" element={<DetailPage />} /> */}
           {/* <Route path="*" element={<Navigate replace to="/" />} /> */}
           <Route path="/detail/:id" element={<DetailPage />} />
+          <Route path="/chat" element={<Navigate replace to="/" />} />
+          <Route path="/adminchat" element={<Navigate replace to="/" />} />
         </Routes>
       )}
       {(currentUser || jwt) && (!adminUser || !admin) && (
