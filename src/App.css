@@ -162,7 +162,7 @@ body {
 }
 
 /* Chat */
-.customer .ce-chat-list,
+/* .customer .ce-chat-list,
 .customer .ce-chat-list-column,
 .customer .ce-settings-column {
   display: none;
@@ -205,3 +205,11 @@ body {
 .customer .ce-reads-row .ce-avatar-dot:nth-child(2) {
   display: none !important;
 }
+.ql-editor {
+  font-family: "Noto Sans JP", sans-serif !important;
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+  -webkit-font-variant-ligatures: none !important;
+  font-variant-ligatures: none !important;
+  font-feature-settings: "liga" 0 !important;
+} */

@@ -5,7 +5,9 @@ import axios from "axios";
 import { AuthContext } from "../Context/AuthContext";
 import { ChatEngine } from "react-chat-engine";
 import Loading from "./Loading";
-
+import { NewMessageForm } from "react-chat-engine";
+import { useMultiChatLogic, MultiChatSocket, MultiChatWindow } from "react-chat-engine-advanced";
+import ChatComponent from "./ChatComponent";
 function ReactChat() {
   let { currentUser } = React.useContext(AuthContext);
   const [dataId, setDataId] = React.useState(null);
@@ -13,6 +15,11 @@ function ReactChat() {
   const [loading, setLoading] = React.useState(false);
 
   console.log(currentUser);
+
+  // const projectId = process.env.REACT_APP_CE_PROJECT_ID;
+  // const username = user.email;
+  // const secret = user.email;
+  // const chatProps = useMultiChatLogic(projectId, username, secret);
 
   function getorCreateUser(callback) {
     axios
@@ -61,9 +68,17 @@ function ReactChat() {
   }, []);
   if (!dataId || !user) return <Loading />;
   console.log(dataId.id);
+
   return (
     <div className="customer">
-      <ChatEngine projectID={process.env.REACT_APP_CE_PROJECT_ID} userName={user.email} userSecret={user.email} renderNewChatForm={() => <div></div>} />
+      <ChatComponent user={user} />
+      {/* <MultiChatWindow projectId={process.env.REACT_APP_CE_PROJECT_ID} username={user.email} secret={user.email} style={{ height: "100vh" }} />
+      <MultiChatSocket projectId={process.env.REACT_APP_CE_PROJECT_ID} username={user.email} secret={user.email} /> */}
+
+      {/* <MultiChatWindow {...chatProps} style={{ height: "100vh" }} />
+      <MultiChatSocket {...chatProps} /> */}
+
+      {/* <ChatEngine projectID={process.env.REACT_APP_CE_PROJECT_ID} userName={user.email} userSecret={user.email} renderNewChatForm={() => <div></div>} renderNewMessageForm={() => <NewMessageForm />} /> */}
     </div>
   );
 }
